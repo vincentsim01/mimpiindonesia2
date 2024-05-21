@@ -13,10 +13,37 @@ app.get('/',(req,res) => {
 
 app.get('/character', async(req,res) =>{
     let query = {};
+    if(req.query.name){
+        query = {
+            "name":req.query.name
+
+        } 
+    }
     let collection = "Character Card";
     let output = await getData(collection,query);
     res.send(output)
 });
+
+app.get('/filter',async(req,res) => {
+    let lgaji = Number(req.query.lgaji);
+    let hgaji = Number(req.query.hgaji);
+
+   if(lgaji && hgaji){
+        query = {
+            // "mealTypes.mealtype_id":Number(mealId),
+            // $and:[{cost:{$gt:lgaji,$lt:hgaji}}]
+
+            "gaji":{$gt:lgaji,$lt:hgaji}
+        }
+    }
+    else{
+        query = {}
+    }
+
+    let collection = "restaurants";
+    let output = await getData(collection,query);
+    res.send(output)
+})
 
 
 app.listen(port,(err) => {
