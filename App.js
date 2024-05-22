@@ -7,6 +7,10 @@ let bodyParser = require('body-parser');
 let cors = require('cors');
 let {dbConnect,getData,postData,deleteData,updateData} = require('./Controller/dbController');
 
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.get('/',(req,res) => {
     res.send("Hiii From Express")
 })
