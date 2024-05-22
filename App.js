@@ -41,6 +41,19 @@ app.get('/dream', async(req,res) =>{
     res.send(output)
 });
 
+app.get('/event', async(req,res) =>{
+    let query = {};
+    if(req.query.name){
+        query = {
+            "name":req.query.name
+
+        } 
+    }
+    let collection = "Event Card";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
 app.get('/filter',async(req,res) => {
     let lgaji = Number(req.query.lgaji);
     let hgaji = Number(req.query.hgaji);
