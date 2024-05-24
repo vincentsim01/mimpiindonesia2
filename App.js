@@ -82,6 +82,30 @@ app.get('/money', async(req,res) =>{
 });
 
 
+app.get('/cardcategory/', async(req,res) =>{
+    let query = {};
+
+    let collection = "Card Category";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
+app.get('/categoryfilter/:CategoryId', async(req,res) =>{
+    // let query = {};
+    if(req.params.CategoryId){
+        query = {
+            "id": Number(req.params.CategoryId),
+
+        } 
+    }else {
+        let query = {};
+    }
+    let collection = "Card Category";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
+
 app.get('/filter',async(req,res) => {
     let lgaji = Number(req.query.lgaji);
     let hgaji = Number(req.query.hgaji);
