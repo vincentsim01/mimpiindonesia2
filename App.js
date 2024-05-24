@@ -67,6 +67,21 @@ app.get('/actioning', async(req,res) =>{
     res.send(output)
 });
 
+
+app.get('/money', async(req,res) =>{
+    let query = {};
+    if(req.query.name){
+        query = {
+            "name":req.query.name
+
+        } 
+    }
+    let collection = "Money";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
+
 app.get('/filter',async(req,res) => {
     let lgaji = Number(req.query.lgaji);
     let hgaji = Number(req.query.hgaji);
