@@ -106,23 +106,23 @@ app.get('/categoryfilter/:CategoryId', async(req,res) =>{
 });
 
 
-app.get('/filter',async(req,res) => {
-    let lgaji = Number(req.query.lgaji);
-    let hgaji = Number(req.query.hgaji);
+app.get('/dreamfilter',async(req,res) => {
+    let name = req.query.name;
 
-   if(lgaji && hgaji){
+
+   if(name){
         query = {
             // "mealTypes.mealtype_id":Number(mealId),
             // $and:[{cost:{$gt:lgaji,$lt:hgaji}}]
 
-            "gaji":{$gt:lgaji,$lt:hgaji}
+            "name": name;
         }
     }
     else{
         query = {}
     }
 
-    let collection = "restaurants";
+    let collection = "Dream Card";
     let output = await getData(collection,query);
     res.send(output)
 })
