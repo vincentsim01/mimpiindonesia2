@@ -107,15 +107,15 @@ app.get('/categoryfilter/:CategoryId', async(req,res) =>{
 
 
 app.get('/dreamfilter',async(req,res) => {
-    let name = req.query.name;
+    let character = req.query.character;
 
 
-   if(name){
+   if(character){
         query = {
             // "mealTypes.mealtype_id":Number(mealId),
             // $and:[{cost:{$gt:lgaji,$lt:hgaji}}]
 
-            "name": name;
+            "character": character
         }
     }
     else{
