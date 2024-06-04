@@ -72,7 +72,7 @@ app.get('/money', async(req,res) =>{
     let query = {};
     if(req.query.name){
         query = {
-            "name":req.query.name
+            "name":Number(req.query.name)
 
         } 
     }
