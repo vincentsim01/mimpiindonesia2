@@ -106,6 +106,34 @@ app.get('/categoryfilter/:CategoryId', async(req,res) =>{
 });
 
 
+app.get('/actionfilter', async(req,res) =>{
+    let theactionphase = req.query.phase;
+    let theactionduration = req.query.duration;
+    let query = {};
+    if(theactionphase && theactionduration){
+        query = {
+            "phase": theactionphase,
+            "duration": theactionduration
+        } 
+    }else if(theactionphase){
+        query = {
+            "phase": theactionphase
+        } 
+    }
+    else if(theactionduration){
+        query = {
+            "duration": theactionduration
+        } 
+    }
+    else {
+        let query = {};
+    }
+    let collection = "Action Card";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
+
 app.get('/dreamfilter',async(req,res) => {
     let character = req.query.character;
 
