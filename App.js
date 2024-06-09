@@ -156,6 +156,28 @@ app.get('/dreamfilter',async(req,res) => {
 })
 
 
+app.get('/eventfilter',async(req,res) => {
+    let eventtype = req.query.type;
+
+
+   if(eventtype){
+        query = {
+            // "mealTypes.mealtype_id":Number(mealId),
+            // $and:[{cost:{$gt:lgaji,$lt:hgaji}}]
+
+            "type": eventtype
+        }
+    }
+    else{
+        query = {}
+    }
+
+    let collection = "Event Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
+
 app.listen(port,(err) => {
     if(err) throw err;
     console.log(`Server is running on port ${port}`)
