@@ -2,10 +2,15 @@
 let express = require('express');
 let app = express();
 let port = 9120
+const dotenv = require('dotenv');
+dotenv.config();
 let {ObjectId} = require('mongodb');
 let bodyParser = require('body-parser');
 let cors = require('cors');
 let {dbConnect,getData,postData,deleteData,updateData} = require('./Controller/dbController');
+
+
+console.log(process.env.MONGO_URL);
 
 app.use(cors());
 app.use(bodyParser.json());
