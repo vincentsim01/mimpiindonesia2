@@ -11,11 +11,11 @@ let {dbConnect,getData,postData,deleteData,updateData} = require('./Controller/d
 const AuthController = require('./Controller/authController');
 
 
-console.log(process.env.MONGO_URL);
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+app.use('/api/auth', AuthController);
 
 app.get('/',(req,res) => {
     res.send("Hiii From Express")
