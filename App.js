@@ -8,6 +8,7 @@ let {ObjectId} = require('mongodb');
 let bodyParser = require('body-parser');
 let cors = require('cors');
 let {dbConnect,getData,postData,deleteData,updateData} = require('./Controller/dbController');
+const AuthController = require('./Controller/authController');
 
 
 console.log(process.env.MONGO_URL);
