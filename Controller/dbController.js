@@ -1,9 +1,14 @@
 
 let mongo = require('mongodb');
 let {MongoClient} = require('mongodb');
+const mongoose = require('mongoose');
 
 
 let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority";
+let mongoUrl2 = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority/Mimpi Indonesia";
+
+mongoose.connect(mongoUrl2);
+
 let client = new MongoClient(mongoUrl);
 
 
