@@ -9,7 +9,7 @@ let mongoUrl2 = process.env.MONGO_URL;
 
 console.log(mongoUrl2);
 
-mongoose.connect(`${mongoUrl2}/MimpiIndonesia/users`);
+mongoose.connect(`${mongoUrl2}`);
 
 let client = new MongoClient(mongoUrl);
 
