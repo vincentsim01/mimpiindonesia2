@@ -5,9 +5,11 @@ const mongoose = require('mongoose');
 
 
 let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority";
-let mongoUrl2 = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority/Mimpi Indonesia";
+let mongoUrl2 = process.env.MONGO_URL;
 
-mongoose.connect(mongoUrl2);
+console.log(mongoUrl2);
+
+mongoose.connect(`${mongoUrl2}/MimpiIndonesia/users`);
 
 let client = new MongoClient(mongoUrl);
 
