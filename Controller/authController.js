@@ -17,6 +17,19 @@ router.get('/users',(req,res) => {
 })
 
 
+router.post('/register',(req,res) => {
+    let hashpassword = bcrypt.hashSync(req.body.password,8);
+    User.create({
+        name:req.body.name,
+        email:req.body.email,
+        password:hashpassword,
+        phone:req.body.phone
+    })
+    .then(function (users) {
+        res.send(users);
+        });
+})
+
 
 
 
