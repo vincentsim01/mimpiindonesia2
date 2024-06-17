@@ -31,6 +31,29 @@ router.post('/register',(req,res) => {
 })
 
 
+router.post('/login',(req,res) => {
+    User.findOne({email:req.body.email})
+
+    .then((user)=>{
+        if(!user)
+        { 
+            return res.status(201).send({auth:false,token:'No User Found Register First'})
+        }
+        else{
+            const passIsvalid = bcrypt.compareSync(req.body.password,user.password);
+            if(!passIsvalid) return res.status(201).send({auth:false,token:'Invalid Password'});
+            let token = jwt.sign({id:user._id},config.secert,{expiresIn:86400})
+            return res.status(200).send({auth:true,token, user});
+
+        }
+
+    })
+    .catch((err)=>{
+        return res.status(500).send({auth:false,token:'There is problem while login'});
+    });
+
+})
+
 
 
 
