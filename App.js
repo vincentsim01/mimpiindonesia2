@@ -111,6 +111,16 @@ app.get('/categoryfilter/:CategoryId', async(req,res) =>{
     res.send(output)
 });
 
+app.get('/orders',async(req,res) => {
+    let query = {}
+    let collection = "orders";
+    if(req.query.email){
+        query = {email:req.query.email}
+    }
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
 
 app.get('/actionfilter', async(req,res) =>{
     let theactionphase = req.query.phase;
