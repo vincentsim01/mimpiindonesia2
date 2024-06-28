@@ -7,8 +7,7 @@ const mongoose = require('mongoose');
 let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority";
 let mongoUrl2 = process.env.MONGO_URL;
 
-// console.log(mongoUrl2);
-
+// connect to MimpiIndonesia with Mongoose for AuthController
 mongoose.connect(`${mongoUrl2}`);
 
 let client = new MongoClient(mongoUrl);
