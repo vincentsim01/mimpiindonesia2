@@ -8,7 +8,7 @@ let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.
 let mongoUrl2 = process.env.MONGO_URL;
 
 // connect to MimpiIndonesia with Mongoose for AuthController
-mongoose.connect(`${mongoUrl2}`);
+mongoose.connect(`${mongoUrl}`);
 
 let client = new MongoClient(mongoUrl);
 
@@ -50,24 +50,12 @@ async function updateData(colName,condition,data){
     }catch(err){
         output = {"response":"Error in post data"}
     }
-    return output
 }
-
-async function deleteData(colName,condition,){
-    let output;
-    try{
-        output = await db.collection(colName).deleteOne(condition);
-    }catch(err){
-        output = {"response":"Error in post data"}
-    }
-    return output
-}
-
 
 module.exports = {
     dbConnect,
     getData,
-    postData,
-    updateData,
-    deleteData
+    postData
+    // ascendRating
+    // sortData
 }
