@@ -4,7 +4,7 @@ let {MongoClient} = require('mongodb');
 const mongoose = require('mongoose');
 
 
-let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/?retryWrites=true&w=majority";
+let mongoUrl = "mongodb+srv://vincentkiathadi:YIfp7gktEi2USAWW@cluster0.nt2oupy.mongodb.net/MimpiIndonesia?retryWrites=true&w=majority";
 let mongoUrl2 = process.env.MONGO_URL;
 
 // connect to MimpiIndonesia with Mongoose for AuthController
@@ -51,7 +51,7 @@ async function updateData(colName,condition,data){
         output = {"response":"Error in post data"}
     }
 }
-
+  
 module.exports = {
     dbConnect,
     getData,
