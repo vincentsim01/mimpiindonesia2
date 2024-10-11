@@ -173,6 +173,33 @@ app.get('/actionfilter', async(req,res) =>{
 });
 
 
+app.get('/triviafilter', async(req,res) =>{
+    let thecategory = req.query.category;
+    let theprice = req.query.price;
+    let query = {};
+    if(thecategory && theprice){
+        query = {
+            "kategori": thecategory,
+            "Harga": theprice
+        } 
+    }else if(thecategory){
+        query = {
+            "kategori": thecategory
+        } 
+    }
+    else if(theprice){
+        query = {
+            "Harga": theprice
+        } 
+    }
+    else {
+        let query = {};
+    }
+    let collection = "Trivia Card";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
 app.get('/dreamfilter',async(req,res) => {
     let character = req.query.character;
 
