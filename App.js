@@ -176,7 +176,7 @@ app.get('/actionfilter', async(req,res) =>{
 app.get('/triviafilter', async(req,res) =>{
     let thecategory = req.query.kategori;
     let thename = req.query.name;
-    let theprice = req.query.harga;
+    let theprice = Number(req.query.Harga);
     let query = {};
     if(thecategory && theprice && thename){
         query = {
