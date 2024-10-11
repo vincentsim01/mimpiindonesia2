@@ -175,12 +175,14 @@ app.get('/actionfilter', async(req,res) =>{
 
 app.get('/triviafilter', async(req,res) =>{
     let thecategory = req.query.kategori;
+    let thename = req.query.name;
     let theprice = req.query.harga;
     let query = {};
-    if(thecategory && theprice){
+    if(thecategory && theprice && thename){
         query = {
             "kategori": thecategory,
-            "Harga": theprice
+            "Harga": theprice,
+            "name": thename
         } 
     }else if(thecategory){
         query = {
@@ -190,6 +192,11 @@ app.get('/triviafilter', async(req,res) =>{
     else if(theprice){
         query = {
             "Harga": theprice
+        } 
+    }
+    else if(thename){
+        query = {
+            "name": thename
         } 
     }
     else {
