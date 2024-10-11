@@ -88,6 +88,19 @@ app.get('/money', async(req,res) =>{
 });
 
 
+app.get('/trivia', async(req,res) =>{
+    let query = {};
+    if(req.query.name){
+        query = {
+            "name":Number(req.query.name)
+
+        } 
+    }
+    let collection = "Trivia Card";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
 app.get('/cardcategory/', async(req,res) =>{
     let query = {};
 
