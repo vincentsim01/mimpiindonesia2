@@ -250,6 +250,31 @@ app.get('/eventfilter',async(req,res) => {
     res.send(output)
 })
 
+app.get('/eventdetail/:eventId',async(req,res) => {
+    let cardId = Number(req.params.eventId);
+
+
+    if(cardId){
+        query = {
+            "id2":Number(cardId)
+
+        }
+    } else{
+        query = {}
+    }
+
+    let collection = "Event Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
+app.post('/pickfavcard',async(req,res) => {
+    let body = req.body;
+    let collection = 'favcard';
+    let response = await postData(collection,body);
+    res.send(response)
+})
+
 
 app.listen(port,(err) => {
     if(err) throw err;
