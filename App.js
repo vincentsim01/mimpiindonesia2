@@ -250,8 +250,32 @@ app.get('/eventfilter',async(req,res) => {
     res.send(output)
 })
 
-app.get('/eventdetail/:eventId',async(req,res) => {
+
+app.get('/eventdetail1/:eventname',async(req,res) => {
+    let cardName = req.params.eventname;
+
+        console.log(cardId);
+        console.log(typeof cardId)
+
+
+    if(cardName){
+        query = {
+            "name":cardName
+
+        }
+    } else{
+        query = {}
+    }
+
+    let collection = "Event Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
+app.get('/eventdetail2/:eventId',async(req,res) => {
     let cardId = Number(req.params.eventId);
+
+
 
 
     if(cardId){
