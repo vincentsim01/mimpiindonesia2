@@ -254,13 +254,13 @@ app.get('/eventfilter',async(req,res) => {
 app.get('/eventdetail1/:eventname',async(req,res) => {
     let cardName = req.params.eventname;
 
-        console.log(cardId);
-        console.log(typeof cardId)
+        console.log(cardName);
+        console.log(typeof cardName);
 
 
     if(cardName){
         query = {
-            "name":cardName
+            "id":cardName
 
         }
     } else{
