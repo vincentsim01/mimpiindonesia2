@@ -254,8 +254,6 @@ app.get('/eventfilter',async(req,res) => {
 app.get('/eventdetail1/:eventname',async(req,res) => {
     let cardName = req.params.eventname;
 
-        console.log(cardName);
-        console.log(typeof cardName);
 
 
     if(cardName){
