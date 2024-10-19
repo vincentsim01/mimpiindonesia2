@@ -273,22 +273,36 @@ app.get('/eventdetail1/:eventname',async(req,res) => {
 app.get('/eventdetail2/:eventId',async(req,res) => {
     let cardId = Number(req.params.eventId);
 
-
-
-
     if(cardId){
         query = {
             "id2":Number(cardId)
-
         }
     } else{
         query = {}
     }
+    let collection = "Event Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
+
+app.get('/moneydetail/:moneyId', async(req,res)=>{
+    let cardId=Number(req.params.moneyId);
+
+    if (cardId){
+        query = {
+            "id2": Number(cardId)
+        }
+    }else{
+        query={}
+    }
+
 
     let collection = "Event Card";
     let output = await getData(collection,query);
     res.send(output)
 })
+
 
 app.post('/pickfavcard',async(req,res) => {
     let body = req.body;
