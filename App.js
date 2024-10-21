@@ -298,11 +298,29 @@ app.get('/moneydetail/:moneyId', async(req,res)=>{
     }
 
 
-    let collection = "Event Card";
+    let collection = "Money";
     let output = await getData(collection,query);
     res.send(output)
 })
 
+
+
+app.get('/triviadetail/:triviaId', async(req,res)=>{
+    let cardId=Number(req.params.triviaId);
+
+    if (cardId){
+        query = {
+            "id2": Number(cardId)
+        }
+    }else{
+        query={}
+    }
+
+
+    let collection = "Trivia Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
 
 app.post('/pickfavcard',async(req,res) => {
     let body = req.body;
