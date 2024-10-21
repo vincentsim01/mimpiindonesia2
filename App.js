@@ -322,6 +322,23 @@ app.get('/triviadetail/:triviaId', async(req,res)=>{
     res.send(output)
 })
 
+
+app.get('/dreamDetail/:dreamId', async(req,res)=>{
+    let cardId=Number(req.params.dreamId);
+
+    if (cardId){
+        query = {
+            "id2": Number(cardId)
+        }
+    }else{
+        query={}
+    }
+
+
+    let collection = "Dream Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
 app.post('/pickfavcard',async(req,res) => {
     let body = req.body;
     let collection = 'favcard';
