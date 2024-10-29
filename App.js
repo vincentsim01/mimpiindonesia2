@@ -339,6 +339,23 @@ app.get('/actiondetail/:actionId', async(req,res)=>{
     res.send(output)
 })
 
+app.get('/characterdetail/:characterId', async(req,res)=>{
+    let cardId=Number(req.params.characterId);
+
+    if (cardId){
+        query = {
+            "id2": Number(cardId)
+        }
+    }else{
+        query={}
+    }
+
+
+    let collection = "Character Card";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
 
 app.get('/dreamDetail/:dreamId', async(req,res)=>{
     let cardId=Number(req.params.dreamId);
@@ -361,6 +378,13 @@ app.post('/pickfavcard',async(req,res) => {
     let collection = 'favcard';
     let response = await postData(collection,body);
     res.send(response)
+})
+
+app.post('/contactus', async(req,res)=>{
+    let body = req.body;
+    let collection = 'Contact Us';
+    let response = await postData(collection,body);
+    res.send(response);
 })
 
 
