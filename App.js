@@ -387,6 +387,13 @@ app.post('/contactus', async(req,res)=>{
     res.send(response);
 })
 
+app.post('/subscriber', async(req,res)=>{
+    let body = req.body;
+    let collection = 'Subscriber';
+    let response = await postData(collection,body);
+    res.send(response);
+})
+
 
 app.listen(port,(err) => {
     if(err) throw err;
