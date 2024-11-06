@@ -402,6 +402,31 @@ app.post('/fanletter', async(req,res)=>{
 })
 
 
+app.post('/submitcardreview', async(req,res)=>{
+    let body = req.body;
+    let collection = 'cardreview';
+    let response = await postData(collection,body);
+    res.send(response);
+})
+
+app.get('/cardreview/:cardId', async(req,res)=>{
+    let cardId=req.params.cardId;
+
+    if (cardId){
+        query = {
+            "cardname": cardId
+        }
+    }else{
+        query={}
+    }
+
+
+    let collection = "cardreview";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
+
 app.listen(port,(err) => {
     if(err) throw err;
     console.log(`Server is running on port ${port}`)
