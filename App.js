@@ -427,6 +427,20 @@ app.get('/cardreview/:cardId', async(req,res)=>{
 })
 
 
+app.get('/wordofwisdom', async(req,res) =>{
+    let query = {};
+    if(req.query.name){
+        query = {
+            "name":Number(req.query.name)
+
+        } 
+    }
+    let collection = "Wordofwisdom";
+    let output = await getData(collection,query);
+    res.send(output)
+});
+
+
 app.listen(port,(err) => {
     if(err) throw err;
     console.log(`Server is running on port ${port}`)
