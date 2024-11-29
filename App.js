@@ -110,7 +110,7 @@ app.get('/cardcategory/', async(req,res) =>{
 });
 
 app.get('/categoryfilter/:CategoryId', async(req,res) =>{
-    // let query = {};
+
     if(req.params.CategoryId){
         query = {
             "id": Number(req.params.CategoryId),
@@ -209,14 +209,18 @@ app.get('/triviafilter', async(req,res) =>{
 
 app.get('/dreamfilter',async(req,res) => {
     let character = req.query.character;
+    let theharga = req.query.theharga;
 
 
    if(character){
         query = {
             // "mealTypes.mealtype_id":Number(mealId),
             // $and:[{cost:{$gt:lgaji,$lt:hgaji}}]
-
             "character": character
+        }
+    }else if(theharga){
+        query = {
+            "Harga":Number(theharga)
         }
     }
     else{
@@ -253,9 +257,6 @@ app.get('/eventfilter',async(req,res) => {
 
 app.get('/eventdetail1/:eventname',async(req,res) => {
     let cardName = req.params.eventname;
-
-
-
     if(cardName){
         query = {
             "id":cardName

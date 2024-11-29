@@ -13,7 +13,6 @@ router.get('/users',(req,res) => {
     User.find({}).then(function (users) {
         res.send(users);
         });
-
 })
 
 
